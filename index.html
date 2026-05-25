@@ -1,0 +1,216 @@
+﻿<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Освітній портал — Шулятицький</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Шапка -->
+    <header class="header">
+        <h1 class="header__title">Шулятицький: Освітній портал</h1>
+        <button class="header__btn" onclick="openLogin()">Увійти</button>
+    </header>
+
+    <!-- Обгортка main + aside -->
+    <div class="page-wrapper">
+
+        <main class="main-content">
+            <section class="courses">
+                <h2 class="courses__heading">Популярні напрямки</h2>
+
+                <!-- Фільтр -->
+                <div class="filter-bar">
+                    <button class="filter-btn active" onclick="filterCards('all', this)">Всі</button>
+                    <button class="filter-btn" onclick="filterCards('web', this)">Веб-розробка</button>
+                    <button class="filter-btn" onclick="filterCards('design', this)">Дизайн</button>
+                    <button class="filter-btn" onclick="filterCards('marketing', this)">Маркетинг</button>
+                    <button class="filter-btn" onclick="filterCards('data', this)">Аналіз даних</button>
+                </div>
+
+                <div class="courses__grid">
+
+                    <div class="card" data-category="web">
+                        <img src="img/OIP.png" alt="Веб-розробка" class="card__img">
+                        <div class="card__body">
+                            <span class="card__tag">Веб-розробка</span>
+                            <h3 class="card__title">Веб-розробка</h3>
+                            <p class="card__desc">Навчіться створювати сучасні сайти та веб-додатки з нуля до результату.</p>
+                            <button class="card__btn" onclick="openModal('Веб-розробка', 'Повний курс із HTML, CSS, JavaScript та сучасних фреймворків. Після навчання ви зможете створювати професійні сайти та SPA-додатки.')">Детальніше</button>
+                        </div>
+                    </div>
+
+                    <div class="card" data-category="design">
+                        <img src="img/UI-vs-UX-Do-You-Know-The-Difference-and-10-Step-UIUX-Design-Process.png" alt="UI/UX Дизайн" class="card__img">
+                        <div class="card__body">
+                            <span class="card__tag">Дизайн</span>
+                            <h3 class="card__title">UI/UX Дизайн</h3>
+                            <p class="card__desc">Опануйте інструменти дизайну та навчіться створювати зручні інтерфейси.</p>
+                            <button class="card__btn" onclick="openModal('UI/UX Дизайн', 'Курс охоплює Figma, основи типографіки, кольорознавство та проєктування користувацького досвіду для мобільних і вебзастосунків.')">Детальніше</button>
+                        </div>
+                    </div>
+
+                    <div class="card" data-category="marketing">
+                        <img src="img/MAR.png" alt="Маркетинг" class="card__img">
+                        <div class="card__body">
+                            <span class="card__tag">Маркетинг</span>
+                            <h3 class="card__title">Маркетинг</h3>
+                            <p class="card__desc">Вивчіть стратегії просування бізнесу в інтернеті та соціальних мережах.</p>
+                            <button class="card__btn" onclick="openModal('Маркетинг', 'Курс включає SMM, SEO, контент-маркетинг, таргетовану рекламу та аналіз ефективності кампаній.')">Детальніше</button>
+                        </div>
+                    </div>
+
+                    <div class="card" data-category="data">
+                        <img src="img/data-analysis.png" alt="Аналіз даних" class="card__img">
+                        <div class="card__body">
+                            <span class="card__tag">Аналіз даних</span>
+                            <h3 class="card__title">Аналіз даних</h3>
+                            <p class="card__desc">Навчіться працювати з даними, будувати графіки та робити висновки.</p>
+                            <button class="card__btn" onclick="openModal('Аналіз даних', 'Курс охоплює Excel, Python, SQL та інструменти візуалізації даних. Ви навчитесь знаходити закономірності та приймати рішення на основі даних.')">Детальніше</button>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+
+        <!-- Бічна панель -->
+        <aside class="sidebar">
+            <h3 class="sidebar__title">Категорії курсів</h3>
+            <ul class="sidebar__list">
+                <li class="sidebar__item active-item" onclick="filterCards('all', null); setActiveItem(this)">
+                    <span class="sidebar__dot"></span> Всі курси <span class="sidebar__count">4</span>
+                </li>
+                <li class="sidebar__item" onclick="filterCards('web', null); setActiveItem(this)">
+                    <span class="sidebar__dot"></span> Веб-розробка <span class="sidebar__count">1</span>
+                </li>
+                <li class="sidebar__item" onclick="filterCards('design', null); setActiveItem(this)">
+                    <span class="sidebar__dot"></span> Дизайн <span class="sidebar__count">1</span>
+                </li>
+                <li class="sidebar__item" onclick="filterCards('marketing', null); setActiveItem(this)">
+                    <span class="sidebar__dot"></span> Маркетинг <span class="sidebar__count">1</span>
+                </li>
+                <li class="sidebar__item" onclick="filterCards('data', null); setActiveItem(this)">
+                    <span class="sidebar__dot"></span> Аналіз даних <span class="sidebar__count">1</span>
+                </li>
+            </ul>
+        </aside>
+
+    </div>
+
+    <!-- Підвал -->
+    <footer class="footer">
+        <div class="footer__inner">
+            <a href="#faq" class="footer__link">Запитання та відповіді</a>
+            <span class="footer__name">Шулятицький А.</span>
+        </div>
+    </footer>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq">
+        <div class="faq__inner">
+            <h2 class="faq__title">FAQ</h2>
+            <p class="faq__text">Тут зібрані найпоширеніші запитання від наших студентів. Якщо у вас є питання — напишіть нам!</p>
+        </div>
+    </section>
+
+    <!-- Кнопка вгору -->
+    <button class="scroll-top" id="scrollTopBtn" onclick="scrollToTop()">↑</button>
+
+    <!-- Модалка курсу -->
+    <div class="modal-overlay" id="courseModal" onclick="closeModal(event)">
+        <div class="modal">
+            <button class="modal__close" onclick="closeModal()">✕</button>
+            <h3 class="modal__title" id="modalTitle"></h3>
+            <p class="modal__text" id="modalText"></p>
+            <button class="modal__enroll" onclick="closeModal()">Записатися на курс</button>
+        </div>
+    </div>
+
+    <!-- Модалка логіну -->
+    <div class="modal-overlay" id="loginModal" onclick="closeLogin(event)">
+        <div class="modal">
+            <button class="modal__close" onclick="closeLogin()">✕</button>
+            <h3 class="modal__title">Вхід до порталу</h3>
+            <div class="login-form">
+                <input type="email" placeholder="Email" class="login-input">
+                <input type="password" placeholder="Пароль" class="login-input">
+                <button class="modal__enroll" onclick="closeLogin()">Увійти</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Фільтр карток
+        function filterCards(category, btnEl) {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'flex';
+                    setTimeout(() => card.classList.add('visible'), 10);
+                } else {
+                    card.classList.remove('visible');
+                    card.style.display = 'none';
+                }
+            });
+
+            if (btnEl) {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btnEl.classList.add('active');
+            }
+        }
+
+        // Активний пункт sidebar
+        function setActiveItem(el) {
+            document.querySelectorAll('.sidebar__item').forEach(i => i.classList.remove('active-item'));
+            el.classList.add('active-item');
+        }
+
+        // Модалка курсу
+        function openModal(title, text) {
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalText').textContent = text;
+            document.getElementById('courseModal').classList.add('active');
+        }
+
+        function closeModal(e) {
+            if (!e || e.target === document.getElementById('courseModal') || e.target.classList.contains('modal__close') || e.target.classList.contains('modal__enroll')) {
+                document.getElementById('courseModal').classList.remove('active');
+            }
+        }
+
+        // Модалка логіну
+        function openLogin() {
+            document.getElementById('loginModal').classList.add('active');
+        }
+
+        function closeLogin(e) {
+            if (!e || e.target === document.getElementById('loginModal') || e.target.classList.contains('modal__close') || e.target.classList.contains('modal__enroll')) {
+                document.getElementById('loginModal').classList.remove('active');
+            }
+        }
+
+        // Кнопка вгору
+        window.addEventListener('scroll', () => {
+            const btn = document.getElementById('scrollTopBtn');
+            btn.classList.toggle('show', window.scrollY > 300);
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Анімація карток при завантаженні
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, i) => {
+                setTimeout(() => card.classList.add('visible'), i * 120);
+            });
+        });
+    </script>
+
+</body>
+</html>
